@@ -4,43 +4,64 @@ import { FormSelect } from 'components/FormSelect';
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
 import { Controller, useForm } from 'react-hook-form';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
-const FIlter = styled.form`
+const FilterTop = styled.div`
   display: flex;
   gap: 1rem;
+  margin: 0 0 0.5rem 0;
 `
 
-export const Filter = ({ offices, getObject }) => {
-  const { control, handleSubmit } = useForm()
-  const onSubmit = (data) => {
-    console.log(data);
-    getObject();
+export const Filter = ({ data, getObject }) => {
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      office: data.rights === 'manager' ? data.office[0] : null,
+      dateStart: data.dateStart || null,
+      dateEnd: data.dateEnd || null,
+    }
+  })
+  const onSubmit = (form) => {
+    getObject(form);
   }
   return (
-    <FIlter onSubmit={handleSubmit(onSubmit)}>
-      <FormDatePicker
-        name='test'
-        label='От'
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <FilterTop>
+        <FormDatePicker
+          name='dateStart'
+          label='От'
+          control={control}
+          defaulValue={data.dateStart}
+        />
+        <FormDatePicker
+          name='dateEnd'
+          label='До'
+          control={control}
+          defaulValue={data.dateEnd}
+        />
+        <FormSelect
+          name='office'
+          control={control}
+          variants={data.office}
+          defaulValue={data.rights === 'manager' ? data.office[0] : null}
+          disabled={data.rights === 'manager'}
+        />
+        <Button
+          variant="contained"
+          fullWidth
+          size='small'
+          type='submit'
+        >
+          Сформировать
+        </Button>
+      </FilterTop>
+      <Controller
+        name='watchOffice'
         control={control}
+        render={({ field }) => (
+          <FormControlLabel {...field} control={<Checkbox />} label="Свернуть до офиса" />
+        )}
       />
-      <FormDatePicker
-        name='test2'
-        label='До'
-        control={control}
-      />
-      <FormSelect
-        name='test3'
-        control={control}
-        variants={offices}
-      />
-      <Button
-        variant="contained"
-        fullWidth
-        size='small'
-        type='submit'
-      >
-        Сформировать
-      </Button>
-    </FIlter>
+    </form>
   );
 };

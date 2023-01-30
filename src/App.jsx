@@ -9,7 +9,7 @@ import './App.scss';
 export const App = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [offices, setOffises] = useState([]);
+  const [data, setData] = useState(null);
   const [tabliList, setTableList] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,8 @@ export const App = () => {
   const getOffises = () => {
     getOfficeList().then((res) => {
       if (res?.data && res?.statusText === 'OK') {
-        if (res?.data?.office) { setOffises(res.data.office) }
+        console.log(res);
+        setData(res.data)
       } else {
         console.log('here');
         setError({ message: 'Что то пошло не так :(' })
@@ -41,12 +42,11 @@ export const App = () => {
     }
   }
 
-  const getObject = () => {
-    getObjectList().then((res) => {
+  const getObject = (raw) => {
+    getObjectList(raw).then((res) => {
       if (res?.data && res?.statusText === 'OK') {
-        // setTableList(testData);
         setTableList(res.data.data);
-        console.log(res.data);
+        console.log(res);
       }
     }).catch((err) => {
       console.log(err)
@@ -63,13 +63,13 @@ export const App = () => {
         <>
           <Header />
           <Filter
-            offices={offices}
             getObject={getObject}
+            data={data}
           />
           {
             tabliList.length > 0 &&
-            <TableObjects 
-            tabliList={tabliList}
+            <TableObjects
+              tabliList={tabliList}
             />
           }
         </>

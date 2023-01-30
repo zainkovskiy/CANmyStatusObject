@@ -26,15 +26,15 @@ const TableText = styled.p`
 export const TableObjects = ({ tabliList }) => {
   const getArrow = (number) => {
     if (number > 0) {
-      return <NorthIcon fontSize='12' color='success'/>
+      return <NorthIcon fontSize='12' color='success' />
     }
     if (number < 0) {
-      return <SouthIcon fontSize='12' color='error'/>
+      return <SouthIcon fontSize='12' color='error' />
     }
   }
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 1000 }} aria-label="simple table">
+      <Table sx={{ minWidth: 1100 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell align="center"><TableTextHeader className='text'>Риелтор</TableTextHeader></TableCell>
@@ -54,6 +54,7 @@ export const TableObjects = ({ tabliList }) => {
                 <TableRow>
                   <TableCell
                     rowSpan={row?.typeRealty.length + 1}
+                    sx={{ 'vertical-align': 'top' }}
                   >
                     <TableTextTitle>
                       {row.realtor}

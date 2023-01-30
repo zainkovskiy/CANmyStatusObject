@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
 export const FormSelect = (props) => {
-  const { variants } = props;
+  const { variants, defaulValue, disabled } = props;
   return (
     <Controller
       {...props}
@@ -12,8 +12,10 @@ export const FormSelect = (props) => {
         <Autocomplete
           disablePortal
           options={variants || []}
-          getOptionLabel={(option) => option.name}
+          getOptionLabel={(option) => option.bDepartment}
           onChange={(e, newValue) => field.onChange(newValue)}
+          defaultValue={defaulValue}
+          disabled={disabled}
           size='small'
           fullWidth
           noOptionsText={<span className='text text_12'>Нет офисов</span>}
