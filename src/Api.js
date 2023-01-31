@@ -10,7 +10,8 @@ export const getOfficeList = async () => {
 
 export const getObjectList = async (raw) => {
   return await axios.post('https://hs-01.centralnoe.ru/Project-Selket-Main/Servers/Charts/Server.php', {
-  ...raw,
-  action: "get",
+    ...raw,
+    action: "get",
+    userId: userId
   })
 }
