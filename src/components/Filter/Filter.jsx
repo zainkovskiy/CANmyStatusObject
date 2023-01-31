@@ -7,6 +7,12 @@ import { Controller, useForm } from 'react-hook-form';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
+const FilterStyle = styled.form`
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+`
 const FilterTop = styled.div`
   display: flex;
   gap: 1rem;
@@ -25,7 +31,7 @@ export const Filter = ({ data, getObject }) => {
     getObject(form);
   }
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <FilterStyle onSubmit={handleSubmit(onSubmit)}>
       <FilterTop>
         <FormDatePicker
           name='dateStart'
@@ -62,6 +68,6 @@ export const Filter = ({ data, getObject }) => {
           <FormControlLabel {...field} control={<Checkbox />} label="Свернуть до офиса" />
         )}
       />
-    </form>
+    </FilterStyle>
   );
 };

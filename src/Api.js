@@ -4,7 +4,7 @@ import axios from 'axios';
 export const getOfficeList = async () => {
   return await axios.post('https://hs-01.centralnoe.ru/Project-Selket-Main/Servers/Charts/Server.php', {
     action: "getStart",
-    userId: 2921
+    userId: userId
   })
 }
 

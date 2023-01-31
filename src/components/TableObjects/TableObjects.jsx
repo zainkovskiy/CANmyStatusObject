@@ -72,32 +72,32 @@ export const TableObjects = ({ tabliList }) => {
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.totalStart}</TableText>
                         <TableText className='text'>На конец: {realty.totalEnd}</TableText>
-                        <TableText className='text'>Разница: {realty.totalStart - realty.totalEnd} {getArrow(realty.totalStart - realty.totalEnd)}</TableText>
+                        <TableText className='text'>Разница: {realty.totalEnd - realty.totalStart} {getArrow(realty.totalStart - realty.totalEnd)}</TableText>
                       </TableCell>
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.blankStart}</TableText>
                         <TableText className='text'>На конец: {realty.blankEnd}</TableText>
-                        <TableText className='text'>Разница: {realty.blankStart - realty.blankEnd} {getArrow(realty.blankStart - realty.blankEnd)}</TableText>
+                        <TableText className='text'>Разница: {realty.blankEnd - realty.blankStart} {getArrow(realty.blankStart - realty.blankEnd)}</TableText>
                       </TableCell>
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.listingStart}</TableText>
                         <TableText className='text'>На конец: {realty.listindEnd}</TableText>
-                        <TableText className='text'>Разница: {realty.listingStart - realty.listindEnd} {getArrow(realty.listingStart - realty.listindEnd)}</TableText>
+                        <TableText className='text'>Разница: {realty.listindEnd - realty.listingStart} {getArrow(realty.listingStart - realty.listindEnd)}</TableText>
                       </TableCell>
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.onAdvStart}</TableText>
                         <TableText className='text'>На конец: {realty.onAdvEnd}</TableText>
-                        <TableText className='text'>Разница: {realty.onAdvStart - realty.onAdvEnd} {getArrow(realty.onAdvStart - realty.onAdvEnd)}</TableText>
+                        <TableText className='text'>Разница: {realty.onAdvEnd - realty.onAdvStart} {getArrow(realty.onAdvStart - realty.onAdvEnd)}</TableText>
                       </TableCell>
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.exStart}</TableText>
                         <TableText className='text'>На конец: {realty.exEnd}</TableText>
-                        <TableText className='text'>Разница: {realty.exStart - realty.exEnd} {getArrow(realty.exStart - realty.exEnd)}</TableText>
+                        <TableText className='text'>Разница: {realty.exEnd - realty.exStart} {getArrow(realty.exStart - realty.exEnd)}</TableText>
                       </TableCell>
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.adStart}</TableText>
                         <TableText className='text'>На конец: {realty.adEnd}</TableText>
-                        <TableText className='text'>Разница: {realty.adStart - realty.adEnd} {getArrow(realty.adStart - realty.adEnd)}</TableText>
+                        <TableText className='text'>Разница: {realty.adEnd - realty.adStart} {getArrow(realty.adStart - realty.adEnd)}</TableText>
                       </TableCell>
                     </TableRow>
                   ))
