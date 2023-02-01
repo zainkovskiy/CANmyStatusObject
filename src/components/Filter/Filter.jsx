@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment/moment';
 import { FormDatePicker } from 'components/FormDatePicker';
 import { FormSelect } from 'components/FormSelect';
 import Button from '@mui/material/Button';
@@ -20,7 +21,9 @@ const FilterTop = styled.div`
 `
 
 export const Filter = ({ data, getObject }) => {
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, formState: {
+    errors
+  } } = useForm({
     defaultValues: {
       office: data.rights === 'manager' ? data.office[0] : null,
       dateStart: data.dateStart || null,
@@ -28,8 +31,9 @@ export const Filter = ({ data, getObject }) => {
     }
   })
   const onSubmit = (form) => {
-    getObject(form);
+    // getObject(form);
   }
+  console.log(errors);
   return (
     <FilterStyle onSubmit={handleSubmit(onSubmit)}>
       <FilterTop>
@@ -38,6 +42,12 @@ export const Filter = ({ data, getObject }) => {
           label='От'
           control={control}
           defaulValue={data.dateStart}
+          rules={{
+            validate: (e) =>
+              moment('2023-01-30').isBefore(moment(e)) || 'Нет статистика ранее'
+          }}
+          error={errors?.dateStart ? true : false}
+          message={errors?.dateStart?.message || ''}
         />
         <FormDatePicker
           name='dateEnd'

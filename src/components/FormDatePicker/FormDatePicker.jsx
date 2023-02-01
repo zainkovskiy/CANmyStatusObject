@@ -14,10 +14,17 @@ export const FormDatePicker = (props) => {
       render={({ field }) => (
         <LocalizationProvider dateAdapter={AdapterMoment} adapterLocale={moment().locale('ru')}>
           <DatePicker
+            {...props}
             label={props.label}
             value={moment(field.value)}
             onChange={(e) => field.onChange(moment(e).format('YYYY-MM-DD'))}
-            renderInput={(params) => <TextField size="small" fullWidth {...params} />}
+            renderInput={(params) => <TextField
+              size="small"
+              fullWidth
+              {...params}
+              error={props.error}
+              helperText={props.message}
+            />}
           />
         </LocalizationProvider>
       )}
