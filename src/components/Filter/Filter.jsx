@@ -31,9 +31,8 @@ export const Filter = ({ data, getObject }) => {
     }
   })
   const onSubmit = (form) => {
-    // getObject(form);
+    getObject(form);
   }
-  console.log(errors);
   return (
     <FilterStyle onSubmit={handleSubmit(onSubmit)}>
       <FilterTop>
