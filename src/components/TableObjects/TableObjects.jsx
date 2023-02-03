@@ -21,6 +21,8 @@ const TableTextHeader = styled(TableTextTitle)`
 const TableText = styled.p`
   margin: 0;
   font-size: 11px;
+  color: ${props => props.isRed < 0 ? 'red' : ''};
+  white-space: nowrap;
 `
 
 export const TableObjects = ({ tabliList }) => {
@@ -34,7 +36,7 @@ export const TableObjects = ({ tabliList }) => {
   }
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 1100 }} aria-label="simple table">
+      <Table sx={{ minWidth: 1200 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell align="center"><TableTextHeader className='text'>Риелтор</TableTextHeader></TableCell>
@@ -54,7 +56,7 @@ export const TableObjects = ({ tabliList }) => {
                 <TableRow>
                   <TableCell
                     rowSpan={row?.typeRealty.length + 1}
-                    sx={{ 'vertical-align': 'top' }}
+                    sx={{ 'verticalAlign': 'top' }}
                   >
                     <TableTextTitle>
                       {row.realtor}
@@ -72,32 +74,44 @@ export const TableObjects = ({ tabliList }) => {
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.totalStart}</TableText>
                         <TableText className='text'>На конец: {realty.totalEnd}</TableText>
-                        <TableText className='text'>Разница: {realty.totalEnd - realty.totalStart} {getArrow(realty.totalStart - realty.totalEnd)}</TableText>
+                        <TableText
+                          isRed={realty.totalEnd - realty.totalStart}
+                          className='text'>Разница: {realty.totalEnd - realty.totalStart} {getArrow(realty.totalEnd - realty.totalStart)}</TableText>
                       </TableCell>
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.blankStart}</TableText>
                         <TableText className='text'>На конец: {realty.blankEnd}</TableText>
-                        <TableText className='text'>Разница: {realty.blankEnd - realty.blankStart} {getArrow(realty.blankStart - realty.blankEnd)}</TableText>
+                        <TableText
+                          isRed={realty.blankEnd - realty.blankStart}
+                          className='text'>Разница: {realty.blankEnd - realty.blankStart} {getArrow(realty.blankEnd - realty.blankStart)}</TableText>
                       </TableCell>
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.listingStart}</TableText>
                         <TableText className='text'>На конец: {realty.listindEnd}</TableText>
-                        <TableText className='text'>Разница: {realty.listindEnd - realty.listingStart} {getArrow(realty.listingStart - realty.listindEnd)}</TableText>
+                        <TableText
+                          isRed={realty.listindEnd - realty.listingStart}
+                          className='text'>Разница: {realty.listindEnd - realty.listingStart} {getArrow(realty.listindEnd - realty.listingStart)}</TableText>
                       </TableCell>
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.onAdvStart}</TableText>
                         <TableText className='text'>На конец: {realty.onAdvEnd}</TableText>
-                        <TableText className='text'>Разница: {realty.onAdvEnd - realty.onAdvStart} {getArrow(realty.onAdvStart - realty.onAdvEnd)}</TableText>
+                        <TableText
+                          isRed={realty.onAdvEnd - realty.onAdvStart}
+                          className='text'>Разница: {realty.onAdvEnd - realty.onAdvStart} {getArrow(realty.onAdvEnd - realty.onAdvStart)}</TableText>
                       </TableCell>
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.exStart}</TableText>
                         <TableText className='text'>На конец: {realty.exEnd}</TableText>
-                        <TableText className='text'>Разница: {realty.exEnd - realty.exStart} {getArrow(realty.exStart - realty.exEnd)}</TableText>
+                        <TableText
+                          isRed={realty.exEnd - realty.exStart}
+                          className='text'>Разница: {realty.exEnd - realty.exStart} {getArrow(realty.exEnd - realty.exStart)}</TableText>
                       </TableCell>
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.adStart}</TableText>
                         <TableText className='text'>На конец: {realty.adEnd}</TableText>
-                        <TableText className='text'>Разница: {realty.adEnd - realty.adStart} {getArrow(realty.adStart - realty.adEnd)}</TableText>
+                        <TableText
+                          isRed={realty.adEnd - realty.adStart}
+                          className='text'>Разница: {realty.adEnd - realty.adStart} {getArrow(realty.adEnd - realty.adStart)}</TableText>
                       </TableCell>
                     </TableRow>
                   ))

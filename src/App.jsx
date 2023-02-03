@@ -8,6 +8,7 @@ import './App.scss';
 
 export const App = () => {
   const [loading, setLoading] = useState(true);
+  const [loadingTable, setLoadingTable] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState(null);
   const [tabliList, setTableList] = useState([]);
@@ -43,6 +44,7 @@ export const App = () => {
   }
 
   const getObject = (raw) => {
+    setLoadingTable(true);
     getObjectList(raw).then((res) => {
       if (res?.data && res?.statusText === 'OK') {
         setTableList(res.data.data);
@@ -50,27 +52,31 @@ export const App = () => {
       }
     }).catch((err) => {
       console.log(err)
+    }).finally(() => {
+      setLoadingTable(false);
     })
   }
 
   return (
     <>
+      <Header />
       {
         loaderOrError()
       }
       {
         (!loading && !error) &&
         <>
-          <Header />
           <Filter
             getObject={getObject}
             data={data}
           />
           {
-            tabliList.length > 0 &&
-            <TableObjects
-              tabliList={tabliList}
-            />
+            loadingTable ?
+              <Linear /> :
+              tabliList.length > 0 &&
+              <TableObjects
+                tabliList={tabliList}
+              />
           }
         </>
       }

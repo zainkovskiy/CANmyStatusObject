@@ -59,7 +59,6 @@ export const Filter = ({ data, getObject }) => {
           control={control}
           variants={data.office}
           defaulValue={data.rights === 'manager' ? data.office[0] : null}
-          disabled={data.rights === 'manager'}
         />
         <Button
           variant="contained"
@@ -77,6 +76,16 @@ export const Filter = ({ data, getObject }) => {
           <FormControlLabel {...field} control={<Checkbox />} label="Свернуть до офиса" />
         )}
       />
+      {
+        data?.isDirector &&
+        <Controller
+          name='isDirector'
+          control={control}
+          render={({ field }) => (
+            <FormControlLabel {...field} control={<Checkbox />} label="Итог по компании" />
+          )}
+        />
+      }
     </FilterStyle>
   );
 };
