@@ -8,6 +8,7 @@ body, html{
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
+  min-height: 100vh;
 }
 .text{
   font-family: "Montserrat", sans-serif;
