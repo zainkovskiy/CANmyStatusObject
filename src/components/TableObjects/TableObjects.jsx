@@ -77,6 +77,7 @@ export const TableObjects = ({ tabliList }) => {
                         <TableText
                           isRed={realty.totalEnd - realty.totalStart}
                           className='text'>Разница: {realty.totalEnd - realty.totalStart} {getArrow(realty.totalEnd - realty.totalStart)}</TableText>
+                        <TableText className='text'>Новые: {realty.totalNew || 0}</TableText>
                       </TableCell>
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.blankStart}</TableText>
@@ -84,6 +85,7 @@ export const TableObjects = ({ tabliList }) => {
                         <TableText
                           isRed={realty.blankEnd - realty.blankStart}
                           className='text'>Разница: {realty.blankEnd - realty.blankStart} {getArrow(realty.blankEnd - realty.blankStart)}</TableText>
+                        <TableText className='text'>Новые: {realty.blankNew || 0}</TableText>
                       </TableCell>
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.listingStart}</TableText>
@@ -91,6 +93,7 @@ export const TableObjects = ({ tabliList }) => {
                         <TableText
                           isRed={realty.listindEnd - realty.listingStart}
                           className='text'>Разница: {realty.listindEnd - realty.listingStart} {getArrow(realty.listindEnd - realty.listingStart)}</TableText>
+                        <TableText className='text'>Новые: {realty.listingNew || 0}</TableText>
                       </TableCell>
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.onAdvStart}</TableText>
@@ -98,6 +101,7 @@ export const TableObjects = ({ tabliList }) => {
                         <TableText
                           isRed={realty.onAdvEnd - realty.onAdvStart}
                           className='text'>Разница: {realty.onAdvEnd - realty.onAdvStart} {getArrow(realty.onAdvEnd - realty.onAdvStart)}</TableText>
+                        <TableText className='text'>Новые: {realty.onAdvNew || 0}</TableText>
                       </TableCell>
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.exStart}</TableText>
@@ -105,6 +109,7 @@ export const TableObjects = ({ tabliList }) => {
                         <TableText
                           isRed={realty.exEnd - realty.exStart}
                           className='text'>Разница: {realty.exEnd - realty.exStart} {getArrow(realty.exEnd - realty.exStart)}</TableText>
+                        <TableText className='text'>Новые: {realty.exNew || 0}</TableText>
                       </TableCell>
                       <TableCell align="center">
                         <TableText className='text'>На начало: {realty.adStart}</TableText>
@@ -112,6 +117,7 @@ export const TableObjects = ({ tabliList }) => {
                         <TableText
                           isRed={realty.adEnd - realty.adStart}
                           className='text'>Разница: {realty.adEnd - realty.adStart} {getArrow(realty.adEnd - realty.adStart)}</TableText>
+                        <TableText className='text'>Новые: {realty.adNew || 0}</TableText>
                       </TableCell>
                     </TableRow>
                   ))
